@@ -1,0 +1,5 @@
+C:/Users/winni/code/RayTracer/build/CMakeFiles/raytracer.dir
+C:/Users/winni/code/RayTracer/build/CMakeFiles/jsonexample.dir
+C:/Users/winni/code/RayTracer/build/CMakeFiles/vectorexample.dir
+C:/Users/winni/code/RayTracer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/winni/code/RayTracer/build/CMakeFiles/ZERO_CHECK.dir

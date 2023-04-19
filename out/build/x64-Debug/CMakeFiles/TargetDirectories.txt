@@ -1,0 +1,5 @@
+C:/Users/winni/code/RayTracer/out/build/x64-Debug/CMakeFiles/raytracer.dir
+C:/Users/winni/code/RayTracer/out/build/x64-Debug/CMakeFiles/jsonexample.dir
+C:/Users/winni/code/RayTracer/out/build/x64-Debug/CMakeFiles/vectorexample.dir
+C:/Users/winni/code/RayTracer/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/winni/code/RayTracer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
