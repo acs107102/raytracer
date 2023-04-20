@@ -80,8 +80,8 @@ namespace rt
 						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[m]->getIntensity(), dist);
 					}
 					
-					colorOfHit = intensity;
-/*
+					
+
 					if (ray->raytype == PRIMARY)
 					{
 						// CHECK FOR REFLECTIONS
@@ -103,7 +103,8 @@ namespace rt
 							intensity = intensity + reflectedColor;
 						}
 					}
-
+					colorOfHit = intensity;
+/*
 					// CHECK FOR OBSTRUCTIONS
 					Ray* rayLight = new Ray();
 				rayLight->raytype = SHADOW;
