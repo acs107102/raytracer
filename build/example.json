@@ -158,6 +158,7 @@
                 "material": {
                     "ks": 0.6,
                     "kd": 1.0,
+                    "kr": 0.3,
                     "specularexponent": 10,
                     "diffusecolor": [
                         1.0,
@@ -187,6 +188,7 @@
                 "material": {
                     "ks": 0.6,
                     "kd": 1.0,
+                    "kr": 0.3,
                     "specularexponent": 10,
                     "diffusecolor": [
                         0.2,

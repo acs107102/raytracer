@@ -64,14 +64,15 @@ namespace rt
 				{
 					colorOfHit = shapes[i]->getAmbient();
 					// printf("color %f %f %f \n",colorOfHit[0],colorOfHit[1],colorOfHit[2]);
-					t = hit.t;
-					N = hit.normal.normalize();
-					V = (ray->origin - (hit.point)).normalize();
+					
+					N = hit.normal.normalize(); // n_hat
+					V = (ray->origin - (hit.point)).normalize();	// v_hat
 
 					for (int m = 0; m < lightSources.size(); m++)
 					{
-						L_m = (lightSources[m]->getPosition() - (hit.point)).normalize();
-						H = (L_m + V) /= ((L_m + V).length());
+					//std::cout << "m: " << m << std::endl;
+						L_m = (lightSources[m]->getPosition() - (hit.point)).normalize(); // l_hat
+						H = (L_m + V).normalize();	// h_hat
 						dist = (lightSources[m]->getPosition() - (hit.point)).length();
 
 						diffuse = (std::max(0.f, (N.dotProduct(L_m)))) * (lightSources[m]->getColor());
@@ -89,12 +90,12 @@ namespace rt
 						float materialReflectness = shapes[i]->getReflect();
 						if (materialReflectness > 0)
 						{
-							printf("REFLECTNESS %f \n",materialReflectness);
+							//printf("REFLECTNESS %f \n",materialReflectness);
 							R = ray->direction - (2 * ((ray->direction).dotProduct(N)) * N);
-							Vec3f noise = (1e-4 * hit.normal);
+							// Vec3f noise = (1e-4 * hit.normal);
 							Ray *rayMirror = new Ray();
 							rayMirror->raytype = SECONDARY;
-							rayMirror->origin = hit.point + noise;
+							rayMirror->origin = hit.point + 1e-4 * hit.normal;
 							rayMirror->direction = -R.normalize();
 							// rayMirror->bounces = 0;
 							Vec3f reflectedColor = materialReflectness * rayCasting(rayMirror);
@@ -103,7 +104,7 @@ namespace rt
 							intensity = intensity + reflectedColor;
 						}
 					}
-					colorOfHit = intensity;
+				t = hit.t;
 /*
 					// CHECK FOR OBSTRUCTIONS
 					Ray* rayLight = new Ray();
@@ -134,9 +135,13 @@ namespace rt
 					}
 					shadowStrength = shadowStrength / lightPositionSampleCount;
 					colorOfHit = (intensity * shadowStrength);*/
+				colorOfHit = intensity;
 				}
+				
 			}
+			
 		}
+		
 		return colorOfHit;
 	}
 
