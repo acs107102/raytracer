@@ -34,7 +34,7 @@ namespace rt
 			for (int j = 0; j < RayTracer::height; j++)
 			{
 				// create ray
-				Ray *ray = camera->getRay(i, j);
+				Ray *ray = camera->getRay(j, i);
 				// ray in scene
 				Vec3f color = scene->rayCasting(ray);
 				// cross in the scene

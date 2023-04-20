@@ -62,7 +62,7 @@ namespace rt
 
 				if (hit.t != 0)
 				{
-					// if it hits the object and if it is closer hit then previous one
+					// closer
 					if (hit.t < t)
 					{
 						colorOfHit = shapes[i]->getAmbient();
@@ -104,7 +104,7 @@ namespace rt
 								intensity = intensity + reflectedColor;
 							}
 						}
-
+/*
 						// CHECK FOR OBSTRUCTIONS
 						Ray *rayLight = new Ray();
 						rayLight->raytype = SHADOW;
@@ -118,18 +118,8 @@ namespace rt
 						// }
 
 						colorOfHit = (intensity * shadowColor); // colorOfHit + colorOfHit*(intensity.normalize());
-
+*/
 						t = hit.t;
-
-						// Vec3f colorGammaCorrected = pow(colorOfHit, Vec3f(1.0 / 2.2));
-
-						// color = material.diffusecolor //ambient
-						// for (int m=0; i < lights.size(); i++)
-						//    diffuse_val = ((light.position - hit.point).dotProduct(shape.n)) * light.id;
-						//    specular_val
-						//    color += material.getColor(diffuse_val, light.is, hit.point-ray.origin);
-						//    // IN MAT color += material.kd * (hit.p - light.position dot shape.n) * light.id //diffuse
-						//    // IN MAT color += material.ks * (R_m? dot ray.direction)^light.is // specular
 					}
 				}
 			}
