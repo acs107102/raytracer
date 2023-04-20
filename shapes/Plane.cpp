@@ -66,10 +66,10 @@ namespace rt
         }
     }
 
-    Vec3f Plane::getRayColor(Vec3f hit, Vec3f color)
+    Vec3f Plane::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
-        printf("Plane getRayColor");
-        // Vec2f uv(-1, -1);
+        //printf("Plane getRayColor");
+        Vec2f texture(-1, -1);
         // Vec3f point = (hit - center).normalize();
         // if (material->isTexture)
         // {
@@ -79,8 +79,8 @@ namespace rt
         //      v = projection_v / (v0-v3).length();
         // 	uv = Vec2f(u, v);
         // }
-        // return material->getColor(diffuse, specular, is, dist, uv);
-        return 0;
+        return material->getColour(color, exponent, direction, distance, texture);
+        //return 0;
     }
 
 } // namespace rt

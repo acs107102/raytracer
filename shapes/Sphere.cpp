@@ -54,10 +54,10 @@ namespace rt
 		return h;
 	}
 
-	Vec3f Sphere::getRayColor(Vec3f hit, Vec3f color)
+	Vec3f Sphere::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
 	{
-		printf("Sphere getRayColor");
-		// Vec2f uv(-1, -1);
+		//printf("Sphere getRayColor");
+		Vec2f texture(-1, -1);
 		// Vec3f point = (hit - center).normalize();
 		// if (material->isTexture)
 		// {
@@ -65,8 +65,8 @@ namespace rt
 		// 	float v = 0.5 - asin(point[2]) / M_PI;
 		// 	uv = Vec2f(u, v);
 		// }
-		// return material->Color(color);
-		return 0;
+		return material->getColour(color, exponent, direction, distance, texture);
+		//return 0;
 	}
 
 } // namespace rt

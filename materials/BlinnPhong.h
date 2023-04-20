@@ -36,16 +36,25 @@ namespace rt
         //
         virtual ~BlinnPhong();
 
-        Vec3f getColour(Vec3f diffuse, float specular, Vec3f is, float dist)
+        Vec3f getColour(Vec3f color, float exponent, Vec3f direction, float distance, Vec2f texture)
         {
-            Vec3f intensity(0, 0, 0);
-
-            Vec3f dif = kd * diffuse * diffusecolor;
-            Vec3f spec = (ks * std::pow(specular, (specularexponent))) * is;
-            // if(kr!=0){
-            //     reflection = kr * castRay(hitPoint + hitNormal * options.bias, R, objects, lights, options, depth + 1);
-            // }
-            return ((dif /= dist) + (spec /= dist));
+            Vec3f baseColor;
+            baseColor = diffusecolor;
+            /*
+			if(texture.x != -1 && hasTexture){
+				//use texture instead if there is one to set the base color
+				int u = texture.x * tWidth;
+				int v = texture.y * tHeight;
+				baseColor = texture[u + (v*tWidth)];
+			}
+			else{
+				baseColor = diffusecolor;
+			}
+*/
+			Vec3f dif = kd * color ;
+			Vec3f spec = (ks * std::pow(exponent,(exponent))) * direction;
+			// can also divide by dist*dist as explained in report
+			return ((dif + spec) * baseColor) /= distance;
         }
 
         Vec3f getAmbient()

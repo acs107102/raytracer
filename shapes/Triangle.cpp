@@ -61,10 +61,10 @@ namespace rt
     }
 
     // Vec3f Triangle::getMaterialColor(Vec3f hitPoint, Vec3f diffuse, float specular, Vec3f is, float dist)
-    Vec3f Triangle::getRayColor(Vec3f hit, Vec3f color)
+    Vec3f Triangle::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
-        printf("Triangle getRayColor");
-        // Vec2f uv(-1, -1);
+        //printf("Triangle getRayColor");
+        Vec2f texture(-1, -1);
         // if (material->hasTexture)
         // {
         //     // get u,v coordinate Vec2f
@@ -86,8 +86,8 @@ namespace rt
         //     u = u / width;
         //     uv = Vec2f(1 - u, v);
         // }
-        // return material->getColor(diffuse, specular, is, dist, uv);
-        return 0;
+        return material->getColour(color, exponent, direction, distance, texture);
+        // return 0;
     }
 
 } // namespace rt

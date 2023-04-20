@@ -22,12 +22,12 @@ namespace rt
         return position;
     }
 
-    Vec3f PointLight::getIntensity()
+    Vec3f PointLight::getIntensity()  // is
     {
         return intensity;
     }
 
-    Vec3f PointLight::getColor()
+    Vec3f PointLight::getColor()   // id
     {
         return color;
     }

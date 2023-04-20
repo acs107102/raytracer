@@ -26,6 +26,8 @@ namespace rt
 		void createScene(Value &scenespecs);
 
 		Vec3f rayCasting(Ray *ray);
+		
+		float getClosestIntersectionT(Ray* ray);
 
 	private:
 		std::vector<LightSource *> lightSources;
