@@ -67,7 +67,7 @@ namespace rt
 					{
 						colorOfHit = shapes[i]->getAmbient();
 						// printf("color %f %f %f \n",colorOfHit[0],colorOfHit[1],colorOfHit[2]);
-
+/*
 						N = hit.normal.normalize();
 						V = (ray->origin - (hit.point)).normalize();
 
