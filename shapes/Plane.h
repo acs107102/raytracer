@@ -33,8 +33,8 @@ public:
 	Hit intersect(Ray* ray);
 
 	Vec3f getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance);
-
-
+	Vec2f getTextureCoordinates(const Vec3f& point);
+		
 private:
 
     Vec3f v0;

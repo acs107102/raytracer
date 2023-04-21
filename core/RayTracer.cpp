@@ -26,20 +26,24 @@ namespace rt
 		Vec3f *pixelbuffer = new Vec3f[camera->getWidth() * camera->getHeight()];
 
 		//----------main rendering function to be filled------
-		printf("pixelbuffer: ", pixelbuffer);
-		printf("camera: ", camera->getWidth());
+		std::cout <<  "pixelbuffer: " << pixelbuffer << std::endl;
+		std::cout << "camera: " << camera->getWidth() << std::endl;
 		int index = 0;
 		for (int i = 0; i < RayTracer::width; i++)
 		{
 			for (int j = 0; j < RayTracer::height; j++)
 			{
 				// create ray
+				printf("create ray");
 				Ray *ray = camera->getRay(j, i);
 				// ray in scene
+				printf("ray casting");
 				Vec3f color = scene->rayCasting(ray);
 				// cross in the scene
-				index++;
 				pixelbuffer[index] = color;
+				index++;
+				std::cout << "index " << index << std::endl;
+				std::cout << i << " " << j << std::endl;
 			}
 		}
 
@@ -57,7 +61,7 @@ namespace rt
 	{
 
 		//---------tonemapping function to be filled--------
-		printf("tone map : pixelbuffer size ", RayTracer::width * RayTracer::height);
+		std::cout << "tone map : pixelbuffer size " <<  RayTracer::width * RayTracer::height << std::endl;
 		float max = 0;
 		for (int i = 0; i < RayTracer::width * RayTracer::height; ++i)
 		{

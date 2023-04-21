@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 	std::printf("Render\n");
 	Vec3f *pixelbuffer = RayTracer::render(camera, scene, d["nbounces"].GetInt());
 
-	std::cout << pixelbuffer->length() << std::endl;
+	std::cout << "Pixelbuffer size: " << pixelbuffer->length() << std::endl;
 
 	// convert linear RGB pixel values [0-1] to range 0-255
 	std::printf("Tonemap\n");

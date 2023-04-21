@@ -32,15 +32,15 @@ namespace rt
 
         static Material *createMaterial(Value &materialSpecs);
 
-        virtual Vec3f getColour(Vec3f color, float exponent, Vec3f direction, float distance, Vec2f texture) = 0;
+        virtual Vec3f getColour(Vec3f color, float exponent, Vec3f direction, float distance, Vec2f textureXY) = 0;
         //virtual Vec3f getColour(Vec3f diffuse, float specular, Vec3f is, float dist) = 0;
         virtual Vec3f getAmbient() = 0;
         virtual float getReflect() = 0;
 
         // static std::vector<Vec3f> readTexture(std::string file, int h, int w);
 
-    private:
-        // bool isTexture;
+    public:
+        bool isTexture;
         // float ks;
         // float kd;
         // float kr;

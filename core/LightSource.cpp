@@ -23,7 +23,7 @@ namespace rt
         if (lightType.compare("pointlight") == 0)
         {
             printf("creating pointlight.. \n");
-            printf("position: ", lightSpecs["position"][0].GetFloat());
+            std::cout << "position: " << lightSpecs["position"][0].GetFloat() << lightSpecs["position"][1].GetFloat() << lightSpecs["position"][2].GetFloat() << std::endl;
             return new PointLight(
                 Vec3f(lightSpecs["position"][0].GetFloat(), lightSpecs["position"][1].GetFloat(), lightSpecs["position"][2].GetFloat()),
                 Vec3f(lightSpecs["is"][0].GetFloat(), lightSpecs["is"][1].GetFloat(), lightSpecs["is"][2].GetFloat()),

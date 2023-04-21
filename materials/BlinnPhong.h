@@ -20,41 +20,38 @@ namespace rt
         // Constructors
         //
         BlinnPhong();
-        // BlinnPhong(Vec3f diffusecolor);
-        // ka * ia + for each light: kd(L_m * N)*id_m  + ks(R_m * V)^exponent * is_m
-        // ^ ambient + sum(m in light) diffuse_m + specular_m
-        // R is mirror reflection direction
-        BlinnPhong(float ks, float kd, float kr, float specularexponent, Vec3f diffusecolor) : ks(ks), kd(kd), kr(kr), specularexponent(specularexponent), diffusecolor(diffusecolor)
-        {
-            // printf("creating blinnphong %f %f %f \n", diffusecolor[0], diffusecolor[1], diffusecolor[2]);
-
-            // this->diffusecolor = diffusecolor;
-        }
+        BlinnPhong(float ks, float kd, float kr, float specularexponent, Vec3f diffusecolor, std::vector<Vec3f> texture, int tWidth, int tHeight) : ks(ks), kd(kd), kr(kr), specularexponent(specularexponent), diffusecolor(diffusecolor), texture(texture), tWidth(tWidth), tHeight(tHeight) {}
+        
+         //BlinnPhong(float ks, float kd, float kr, float specularexponent, Vec3f diffusecolor) : ks(ks), kd(kd), kr(kr), specularexponent(specularexponent), diffusecolor(diffusecolor){}
 
         //
         // Destructor
         //
         virtual ~BlinnPhong();
 
-        Vec3f getColour(Vec3f color, float exponent, Vec3f direction, float distance, Vec2f texture)
+        Vec3f getColour(Vec3f color, float exponent, Vec3f direction, float distance, Vec2f textureXY)
         {
             Vec3f baseColor;
-            baseColor = diffusecolor;
-            /*
-			if(texture.x != -1 && hasTexture){
-				//use texture instead if there is one to set the base color
-				int u = texture.x * tWidth;
-				int v = texture.y * tHeight;
+            // baseColor = diffusecolor;
+            
+            std::cout << "textureXY " << textureXY << std::endl;
+            printf("get colour\n");
+			if(textureXY.x != -1 && isTexture){
+			printf("hi");
+				int u = textureXY.x * tWidth;
+				int v = textureXY.y * tHeight;
 				baseColor = texture[u + (v*tWidth)];
 			}
 			else{
+			printf("here");
 				baseColor = diffusecolor;
 			}
-*/
+// std::cout << "check spec: " << exponent << " " << specularexponent << std::endl;
+// std::cout << "check dif: " << color << " " << diffusecolor << std::endl;
 			Vec3f dif = kd * color ;
-			Vec3f spec = (ks * std::pow(exponent,(exponent))) * direction;
-			// can also divide by dist*dist as explained in report
+			Vec3f spec = (ks * std::pow(exponent,(specularexponent))) * direction;
 			return ((dif + spec) * baseColor) /= distance;
+			//return (dif + spec) /= distance;
         }
 
         Vec3f getAmbient()
@@ -93,6 +90,9 @@ namespace rt
         float kr;
         float specularexponent;
         Vec3f diffusecolor;
+        std::vector<Vec3f> texture;
+		int tWidth;
+		int tHeight;
     };
 
 } // namespace rt

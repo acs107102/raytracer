@@ -24,10 +24,10 @@ namespace rt
         Hit h;
         h.shape = this;
         //-----------to be implemented -------------
-        Vec3f normal = ((v0 - v1).crossProduct(v0 - v3)).normalize();
+        Vec3f normal = ((v0 - v1).crossProduct(v0 - v2)).normalize();
         float distance = (v3 - (ray->origin)).dotProduct(normal) / normal.dotProduct(ray->direction);
         h.t = distance;
-        if (distance < 0)
+        if (distance < 0 || (normal.dotProduct(ray->direction)) == 0)
         {
             h.t = INFINITY;
             h.normal = Vec3f(0, 0, 0);
@@ -69,18 +69,32 @@ namespace rt
     Vec3f Plane::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
         //printf("Plane getRayColor");
-        Vec2f texture(-1, -1);
-        // Vec3f point = (hit - center).normalize();
-        // if (material->isTexture)
-        // {
-        // 	float projection_u = (hitPoint - v3).dotProduct(v2-v3) / (v2-v3).length();
-        // 	float u = projection_u / (v2-v3).length();
-        //      float projection_v = (hitPoint - v3).dotProduct(v0-v3) / (v0-v3).length();
-        //      v = projection_v / (v0-v3).length();
-        // 	uv = Vec2f(u, v);
-        // }
+        
+        Vec2f texture = getTextureCoordinates(hit);
         return material->getColour(color, exponent, direction, distance, texture);
         //return 0;
     }
+    
+    Vec2f Plane::getTextureCoordinates(const Vec3f& point)
+{
+    Vec2f uv(-1, -1);
+
+  //std::cout << material->isTexture << std::endl;
+    if (material->isTexture)
+    {
+        Vec3f dir = point - v0;
+        Vec3f width = v1 - v0;
+        Vec3f height = v3 - v0;
+        float projectionU = dir.dotProduct(width) / width.length();
+        float u = projectionU / width.length();
+        float projectionV = dir.dotProduct(height) / height.length();
+        float v = projectionV / height.length();
+        uv = Vec2f(u, v);
+    }
+
+    return uv;
+}
+    
+    
 
 } // namespace rt

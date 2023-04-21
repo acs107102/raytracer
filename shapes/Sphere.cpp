@@ -34,6 +34,7 @@ namespace rt
 		double b = 2.0 * oc.dotProduct(ray->direction);
 		double c = oc.dotProduct(oc) - radius * radius;
 		double discriminant = b * b - 4 * a * c;
+		std::cout << "try" << std::endl;
 		if (discriminant < 0)
 		{
 			h.point = Vec3f(-1, -1, -1);
@@ -56,17 +57,29 @@ namespace rt
 
 	Vec3f Sphere::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
 	{
-		//printf("Sphere getRayColor");
-		Vec2f texture(-1, -1);
-		// Vec3f point = (hit - center).normalize();
-		// if (material->isTexture)
-		// {
-		// 	float u = 0.5 + atan2(point[0], -point[1]) / (2 * M_PI);
-		// 	float v = 0.5 - asin(point[2]) / M_PI;
-		// 	uv = Vec2f(u, v);
-		// }
+		Vec2f texture = getTextureCoordinates(hit);
+		std::cout << "here !!!!! " << material->getColour(color, exponent, direction, distance, texture) << std::endl;
+		
 		return material->getColour(color, exponent, direction, distance, texture);
 		//return 0;
 	}
+	
+	Vec2f Sphere::getTextureCoordinates(const Vec3f& point)
+{
+    Vec2f uv(-1, -1);
+
+    std::cout << "texture: " << material->isTexture << std::endl;
+    if (material->isTexture)
+    {
+
+        Vec3f p = (point - center).normalize();
+        float u = 0.5 + atan2(p.x, -p.y) / (2 * M_PI);
+			float v = 0.5 - asin(p.z) / M_PI;
+			uv = Vec2f(u,v);
+			std::cout << "sphere uv " << uv << std::endl;
+    }
+
+    return uv;
+}
 
 } // namespace rt

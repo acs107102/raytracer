@@ -1,121 +1,199 @@
 {
-"nbounces":3,
-"camera":{
-    "type":"pinhole",
-    "width":800,
-    "height":800,
-    "fov":35,
-    "camPos": [0.0, -3.5, 2.0],
-    "camView": [0.0, 1.0, -0.1],
-    "camAxis": [0.0, 0.0, 0.5]
-},
-"scene":{
-    "backgroundcolor":[0.01, 0.01, 0.01],
-    "lightsources": [
-    {
-        "type": "pointlight",
-        "position": [0.0, 1.0, 1.5],
-        "is": [100.0, 100.0, 100.0],
-        "id": [100.0, 100.0, 100.0]
-    }
-    ],
-    "shapes":[
-    {
-        "type":"sphere",
-        "center": [0.0, 2.7, 0.15],
-        "radius":0.5,
+    "nbounces": 3,
+    "camera": {
+        "type": "pinhole",
+        "width": 800,
+        "height": 800,
+        "fov": 35,
+        "camPos": [
+            0.0,
+            -3.5,
+            2.0
+        ],
+        "camView": [
+            0.0,
+            1.0,
+            -0.1
+        ],
+        "camAxis": [
+            0.0,
+            0.0,
+            0.5
+        ]
+    },
+    "scene": {
+        "backgroundcolor": [
+            0.01,
+            0.01,
+            0.01
+        ],
+        "lightsources": [
+            {
+                "type": "pointlight",
+                "position": [
+                    0.0,
+                    1.0,
+                    1.5
+                ],
+                "is": [
+                    100.0,
+                    100.0,
+                    100.0
+                ],
+                "id": [
+                    100.0,
+                    100.0,
+                    100.0
+                ]
+            }
+        ],
+        "shapes": [
+             {
+        "id": "mesh triangle",
+        "type":"trimesh",
+        "model":"octahedron.ply",
+        "pos": [0, 2.7, 0.35],
+        "size":0.7,
+        "vs":3,
+        "fs":1,
         "material":{
             "ks":0.4,
             "kd":0.8,
-            "specularexponent":3,
-            "diffusecolor":[0.4, 0.3, 0.4],
-            "tPath": "../textures/sky-map.ppm",
-            "tWidth": 852,
-            "tHeight": 480
+            "specularexponent":40,
+            "diffusecolor":[0.8, 0.6, 0.4]
         }
     },
-    {
-        "id": "back wall",
-        "type": "plane",
-        "v1": [-2.0, 8.0, 0.0],
-        "v2": [-2.0, 8.0, 5.0],
-        "v3": [2.0, 8.0, 5.0],
-        "v0": [2.0, 8.0, 0.0],
-        "material":{
-            "ks": 0.6,
-            "kd": 0.7,
-            "kr": 0.3,
-            "specularexponent": 10,
-            "diffusecolor": [1.0, 1.0, 1.0]
-        }
-    },
-    {
-        "id": "floor",
-        "type": "plane",
-        "v3": [-2.0, 0.0, 0.0],
-        "v0": [-2.0, 8.0, 0.0],
-        "v1": [2.0, 8.0, 0.0],
-        "v2": [2.0, 0.0, 0.0],
-        "material": {
-            "ks": 0.6,
-            "kd": 0.7,
-            "kr": 0.3,
-            "specularexponent": 10,
-            "diffusecolor": [1.0, 1.0, 1.0],
-            "tPath": "../textures/sicily.ppm",
-            "tWidth": 600,
-            "tHeight": 490
-        }
-    },
-    {
-        "id": "magic triangle",
-        "type": "triangle",
-        "v0": [-2.0, 4.0, 2.7],
-        "v1": [0.0, 5.5, 3.5],
-        "v2": [-1, 3.5, 1.0],
-        "material": {
-            "ks": 0.6,
-            "kd": 1.0,
-            "kr": 0.5,
-            "specularexponent": 10,
-            "diffusecolor": [1.0, 0.2, 0.2],
-            "tPath": "../textures/sky-map.ppm",
-            "tWidth": 852,
-            "tHeight": 480
-        }
-    },
-    {
-        "id": "left wall",
-        "type": "triangle",
-        "v0": [-2.0, 8.0, 0.0],
-        "v1": [-2.0, 8.0, 5.0],
-        "v2": [-2.0, 0.0, 0.0],
-        "material": {
-            "ks": 0.6,
-            "kd": 1.0,
-            "specularexponent": 10,
-            "diffusecolor": [1.0, 0.2, 0.2],
-            "tPath": "../textures/sicily.ppm",
-            "tWidth": 600,
-            "tHeight": 490
-        }
-    },
-    {
-        "id": "right wall",
-        "type": "triangle",
-        "v0": [2.0, 8.0, 0.0],
-        "v1": [2.0, 0.0, 0.0],
-        "v2": [2.0, 8.0, 5.0],
-        "material": {
-            "ks": 0.6,
-            "kd": 1.0,
-            "specularexponent": 10,
-            "diffusecolor": [0.2, 0.2, 1.0],
-            "tPath": "../textures/sicily.ppm",
-            "tWidth": 600,
-            "tHeight": 490
-        }
+            {
+                "id": "back wall",
+                "type": "plane",
+                "v1": [
+                    -2.0,
+                    8.0,
+                    0.0
+                ],
+                "v2": [
+                    -2.0,
+                    8.0,
+                    5.0
+                ],
+                "v3": [
+                    2.0,
+                    8.0,
+                    5.0
+                ],
+                "v0": [
+                    2.0,
+                    8.0,
+                    0.0
+                ],
+                "material": {
+                    "ks": 0.6,
+                    "kd": 0.7,
+                    "kr": 0.3,
+                    "specularexponent": 10,
+                    "diffusecolor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                }
+            },
+            {
+                "id": "floor",
+                "type": "plane",
+                "v3": [
+                    -2.0,
+                    0.0,
+                    0.0
+                ],
+                "v0": [
+                    -2.0,
+                    8.0,
+                    0.0
+                ],
+                "v1": [
+                    2.0,
+                    8.0,
+                    0.0
+                ],
+                "v2": [
+                    2.0,
+                    0.0,
+                    0.0
+                ],
+                "material": {
+                    "ks": 0.6,
+                    "kd": 0.7,
+                    "kr": 0.3,
+                    "specularexponent": 10,
+                    "diffusecolor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "tPath": "../textures/sicily.jpg",
+                    "tWidth": 600,
+                    "tHeight": 490
+                }
+            },
+            {
+                "id": "left wall",
+                "type": "triangle",
+                "v0": [
+                    -2.0,
+                    8.0,
+                    0.0
+                ],
+                "v1": [
+                    -2.0,
+                    8.0,
+                    5.0
+                ],
+                "v2": [
+                    -2.0,
+                    0.0,
+                    0.0
+                ],
+                "material": {
+                    "ks": 0.6,
+                    "kd": 1.0,
+                    "specularexponent": 10,
+                    "diffusecolor": [
+                        1.0,
+                        0.2,
+                        0.2
+                    ]
+                }
+            },
+            {
+                "id": "right wall",
+                "type": "triangle",
+                "v0": [
+                    2.0,
+                    8.0,
+                    0.0
+                ],
+                "v1": [
+                    2.0,
+                    0.0,
+                    0.0
+                ],
+                "v2": [
+                    2.0,
+                    8.0,
+                    5.0
+                ],
+                "material": {
+                    "ks": 0.6,
+                    "kd": 1.0,
+                    "specularexponent": 10,
+                    "diffusecolor": [
+                        0.2,
+                        0.2,
+                        1.0
+                    ]
+                }
+            }
+        ]
     }
-    ]
-}
 }

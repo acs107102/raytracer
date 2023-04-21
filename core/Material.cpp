@@ -66,8 +66,10 @@ namespace rt
             texPath = materialSpecs["tPath"].GetString();
             texWidth = materialSpecs["tWidth"].GetInt();
             texHeight = materialSpecs["tHeight"].GetInt();
+            
+            printf("find");
+            std::cout << "find " << texPath << " " << texWidth << " " << texHeight << std::endl;
 
-            // texture = readTexture(texPath, texHeight, texWidth);
             vector<Vec3f> pixelbuffer;
 
             std::string line;
@@ -94,12 +96,14 @@ namespace rt
 
                 stream.close();
             }
+            texture = pixelbuffer;
         }
 
-        // Material *material = new BlinnPhong(ks, kd, kr, exponent, color, texture, texWidth, texHeight);
-        // material->isTexture = materialSpecs.HasMember("tPath");
-        // return 0;
-        return new BlinnPhong(Ks, Kd, Kr, exponent, color);
+        Material *material = new BlinnPhong(Ks, Kd, Kr, exponent, color, texture, texWidth, texHeight);
+        material->isTexture = materialSpecs.HasMember("tPath");
+        //std::cout << "aa" << material->isTexture << std::endl;
+        return material;
+        //return new BlinnPhong(Ks, Kd, Kr, exponent, color);
     }
 
     // vector<Vec3f> Material::readTexture(string path, int height, int width)

@@ -53,14 +53,10 @@ namespace rt
     }
 }
 
-    Vec3f TriMesh::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
-    {
-        return material->getColour(color, exponent, direction, distance, Vec2f(-1, -1));
-    }
 
     Hit TriMesh::intersect(Ray *ray)
     {
-        // printf("trimesh intersection \n");
+        printf("Hit \n");
         Hit h;
         h.t = INFINITY;
 
@@ -72,11 +68,14 @@ namespace rt
         {
             h = vectorF;
         }
-        }
-  
-        
+        } 
 
         return h;
+    }
+    
+    Vec3f TriMesh::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
+    {
+        return material->getColour(color, exponent, direction, distance, Vec2f(-1, -1));
     }
 
 } // namespace rt
