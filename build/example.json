@@ -169,7 +169,10 @@
                         1.0,
                         0.2,
                         0.2
-                    ]
+                    ],
+                    "tPath": "../textures/sicily.ppm",
+                    "tWidth": 600,
+                    "tHeight": 490
                 }
             },
             {

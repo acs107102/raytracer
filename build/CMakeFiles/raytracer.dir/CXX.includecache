@@ -214,11 +214,15 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.cpp
-Plane.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.cpp
+Triangle.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.h
+math/geometry.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/math/geometry.h
+core/RayHitStructs.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/RayHitStructs.h
 core/Shape.h
 /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/Shape.h
 

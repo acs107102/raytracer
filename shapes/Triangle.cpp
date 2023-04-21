@@ -64,30 +64,32 @@ namespace rt
     Vec3f Triangle::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
         //printf("Triangle getRayColor");
-        Vec2f texture(-1, -1);
-        // if (material->hasTexture)
-        // {
-        //     // get u,v coordinate Vec2f
-        //     Vec3f bottomEdge = *v1 - *v0;
-        //     Vec3f N = bottomEdge.crossProduct(*v2 - *v0);
-        //     float area = N.length() / 2;
-        //     float height = 2 * area / bottomEdge.length();
-        //     float width = (*v1 - *v2).dotProduct(bottomEdge) / bottomEdge.length();
-
-        //     if (width < bottomEdge.length())
-        //         width = bottomEdge.length();
-
-        //     Vec3f widthVec = bottomEdge.normalize() * width;
-        //     float heightVec = pow((hitPoint - *v0).length(), 2) - pow(((hitPoint - *v0).dotProduct(bottomEdge) / bottomEdge.length()), 2);
-        //     heightVec = sqrt(heightVec);
-
-        //     float v = heightVec / height;
-        //     float u = (hitPoint - *v0).dotProduct(widthVec) / widthVec.length();
-        //     u = u / width;
-        //     uv = Vec2f(1 - u, v);
-        // }
+        Vec2f texture = getTextureCoordinates(hit);
         return material->getColour(color, exponent, direction, distance, texture);
         // return 0;
+    }
+    
+    Vec2f Triangle::getTextureCoordinates(const Vec3f& point){
+    Vec2f uv(-1,-1);;
+        if(material->isTexture){
+            Vec3f edge1 = v1 - v0;
+            float edge1Length = edge1.length();
+            Vec3f edge2 = v2 - v0;
+            Vec3f dir = point - v0;
+
+            float height = edge1.crossProduct(edge2).length() / edge1Length;
+            float width = (v1-v2).dotProduct(edge1) / edge1Length;
+            if(width<edge1Length) width = edge1Length;
+
+            Vec3f widthVec = edge1.normalize() * width;
+            float heightVec = pow(dir.length(), 2) - pow((dir.dotProduct(edge1) / edge1Length), 2);
+            heightVec = sqrt(heightVec);
+            float v = heightVec / height;
+            float u = dir.dotProduct(widthVec) / widthVec.length();
+            u = u /width;
+            uv = Vec2f(1-u,v);
+        }
+        return uv;
     }
 
 } // namespace rt
