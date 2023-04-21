@@ -37,13 +37,13 @@ namespace rt
             std::cout << "textureXY " << textureXY << std::endl;
             printf("get colour\n");
 			if(textureXY.x != -1 && isTexture){
-			printf("hi");
+			printf("hi\n");
 				int u = textureXY.x * tWidth;
 				int v = textureXY.y * tHeight;
 				baseColor = texture[u + (v*tWidth)];
 			}
 			else{
-			printf("here");
+			printf("here\n");
 				baseColor = diffusecolor;
 			}
 // std::cout << "check spec: " << exponent << " " << specularexponent << std::endl;

@@ -60,7 +60,6 @@ namespace rt
         }
     }
 
-    // Vec3f Triangle::getMaterialColor(Vec3f hitPoint, Vec3f diffuse, float specular, Vec3f is, float dist)
     Vec3f Triangle::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
         //printf("Triangle getRayColor");
@@ -73,21 +72,20 @@ namespace rt
     Vec2f uv(-1,-1);;
         if(material->isTexture){
             Vec3f edge1 = v1 - v0;
-            float edge1Length = edge1.length();
             Vec3f edge2 = v2 - v0;
+            Vec3f edge3 = v1 - v2;
             Vec3f dir = point - v0;
 
+            float edge1Length = edge1.length();
+            float width = edge1.dotProduct(edge3) / edge1Length;
             float height = edge1.crossProduct(edge2).length() / edge1Length;
-            float width = (v1-v2).dotProduct(edge1) / edge1Length;
+            
             if(width<edge1Length) width = edge1Length;
 
-            Vec3f widthVec = edge1.normalize() * width;
-            float heightVec = pow(dir.length(), 2) - pow((dir.dotProduct(edge1) / edge1Length), 2);
-            heightVec = sqrt(heightVec);
-            float v = heightVec / height;
-            float u = dir.dotProduct(widthVec) / widthVec.length();
-            u = u /width;
-            uv = Vec2f(1-u,v);
+            float v = sqrt(pow(-dir.length(), 2) - pow((-dir.dotProduct(edge1) / edge1Length), 2)) / height;
+            float u = -dir.dotProduct(edge1.normalize()) / edge1Length;
+
+            uv = Vec2f(u,v);
         }
         return uv;
     }

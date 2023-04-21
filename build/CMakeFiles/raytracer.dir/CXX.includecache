@@ -214,15 +214,29 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.cpp
-Triangle.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.h
+../shapes/Triangle.h
+math/geometry.h
+../shapes/math/geometry.h
+core/RayHitStructs.h
+../shapes/core/RayHitStructs.h
+core/Shape.h
+../shapes/core/Shape.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Triangle.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.cpp
+TriMesh.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.h
+typeinfo
+-
+
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.h
 math/geometry.h
 /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/math/geometry.h
 core/RayHitStructs.h
 /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/RayHitStructs.h
 core/Shape.h
 /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/Shape.h
+shapes/Triangle.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/shapes/Triangle.h
+fstream
+-
 

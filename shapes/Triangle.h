@@ -45,7 +45,7 @@ namespace rt
         //     return Bounds(min, max);
         // }
 
-    private:
+    public:
         Vec3f v0;
         Vec3f v1;
         Vec3f v2;

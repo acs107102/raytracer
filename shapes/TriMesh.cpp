@@ -56,7 +56,7 @@ namespace rt
 
     Hit TriMesh::intersect(Ray *ray)
     {
-        printf("Hit \n");
+        // printf("Hit triMesh\n");
         Hit h;
         h.t = INFINITY;
 
@@ -75,8 +75,71 @@ namespace rt
     
     Vec3f TriMesh::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
-        return material->getColour(color, exponent, direction, distance, Vec2f(-1, -1));
+        Vec2f texture = getTextureCoordinates(hit);
+        return material->getColour(color, exponent, direction, distance, texture);
     }
+
+    Vec2f TriMesh::getTextureCoordinates(const Vec3f& point)
+    {
+      Vec2f uv(-1, -1);
+      std::cout << "texture: " << material->isTexture << std::endl;
+      if (material->isTexture){
+        std::cout << "vector face: " << vectorFace.size() << std::endl;
+        for (int i = 0; i < vectorFace.size(); i++) {
+          const Vec3f& v0 = vectorFace[i]->v0;
+          const Vec3f& v1 = vectorFace[i]->v1;
+          const Vec3f& v2 = vectorFace[i]->v2;
+          
+          if (isPointInsideTriangle(point, v0, v1, v2)) {
+            Vec3f edge1 = v1 - v0;
+            Vec3f edge2 = v2 - v0;
+            Vec3f edge3 = v1 - v2;
+            Vec3f dir = point - v0;
+
+            float edge1Length = edge1.length();
+            float width = edge1.dotProduct(edge3) / edge1Length;
+            float height = edge1.crossProduct(edge2).length() / edge1Length;
+        
+            if(width < 0) width = 0;
+            if(width > edge1Length) width = edge1Length;
+            if(height < 0) height = 0;
+
+            float v = sqrt(pow(-dir.length(), 2) - pow((-dir.dotProduct(edge1) / edge1Length), 2)) / height;
+            float u = -dir.dotProduct(edge1.normalize()) / edge1Length;
+
+            uv = Vec2f(u,v);
+
+            std::cout << "trimesh uv " << uv << std::endl;
+            break;
+          }   
+        }
+      
+      }
+      return uv;
+    }
+
+    bool TriMesh::isPointInsideTriangle(const Vec3f& point, const Vec3f& v0, const Vec3f& v1, const Vec3f& v2) {
+    // Calculate the vectors representing the edges of the triangle
+      Vec3f edge1 = v1 - v0;
+      Vec3f edge2 = v2 - v0;
+      Vec3f edge3 = point - v0;
+
+    // Calculate the dot products
+      float dot11 = edge1.dotProduct(edge1);
+      float dot22 = edge2.dotProduct(edge2);
+      float dot12 = edge1.dotProduct(edge2);
+      float dot13 = edge1.dotProduct(edge3);
+      float dot23 = edge2.dotProduct(edge3);
+
+    // Calculate the barycentric coordinates
+      float invDenom = 1.0f / (dot11 * dot22 - dot12 * dot12);
+      float u = (dot22 * dot13 - dot12 * dot23) * invDenom;
+      float v = (dot11 * dot23 - dot12 * dot13) * invDenom;
+
+    // Check if the point is inside the triangle
+      return (u >= 0.0f) && (v >= 0.0f) && (u + v <= 1.0f);
+  }
+
 
 } // namespace rt
 

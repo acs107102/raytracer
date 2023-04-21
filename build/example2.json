@@ -60,7 +60,10 @@
             "ks":0.4,
             "kd":0.8,
             "specularexponent":40,
-            "diffusecolor":[0.8, 0.6, 0.4]
+            "diffusecolor":[0.8, 0.6, 0.4],
+                    "tPath": "../textures/sicily.ppm",
+                    "tWidth": 850,
+                    "tHeight": 480
         }
     },
             {
