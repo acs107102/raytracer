@@ -26,7 +26,7 @@ namespace rt
         //-----------to be implemented -------------
         Vec3f normal = ((v0 - v1).crossProduct(v0 - v2)).normalize();
         float distance = (v3 - (ray->origin)).dotProduct(normal) / normal.dotProduct(ray->direction);
-        h.t = distance;
+        
         if (distance < 0 || (normal.dotProduct(ray->direction)) == 0)
         {
             h.t = INFINITY;
@@ -47,15 +47,15 @@ namespace rt
         float y = direction.dotProduct(height) / height.length();
         // std::cout << "y: " << y << std::endl;
 
-        if ((normal.dotProduct(ray->direction)) > 0)
-        {
-            h.normal = -h.normal;
-        }
+
 
         if (x >= 0 && x <= width.length() && y >= 0 && y <= height.length())
         {
             h.point = p;
-            h.normal = normal;
+            //h.normal = normal;
+            h.t = distance;
+            if (normal.dotProduct(ray->direction) < 0) h.normal = normal;
+            else h.normal = -normal;
             return h;
         }
         else

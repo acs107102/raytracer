@@ -34,16 +34,16 @@ namespace rt
 			for (int j = 0; j < RayTracer::height; j++)
 			{
 				// create ray
-				printf("create ray");
+				//printf("create ray");
 				Ray *ray = camera->getRay(j, i);
 				// ray in scene
-				printf("ray casting");
+				//printf("ray casting");
 				Vec3f color = scene->rayCasting(ray);
 				// cross in the scene
 				pixelbuffer[index] = color;
 				index++;
-				std::cout << "index " << index << std::endl;
-				std::cout << i << " " << j << std::endl;
+				//std::cout << "index " << index << std::endl;
+				//std::cout << i << " " << j << std::endl;
 			}
 		}
 

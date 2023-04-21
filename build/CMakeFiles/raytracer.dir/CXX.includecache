@@ -18,11 +18,11 @@ vector
 math/geometry.h
 ../core/math/geometry.h
 
-../materials/BlinnPhong.h
-core/Material.h
-../materials/core/Material.h
+../core/Shape.h
 core/RayHitStructs.h
-../materials/core/RayHitStructs.h
+../core/core/RayHitStructs.h
+core/Material.h
+../core/core/Material.h
 
 ../math/geometry.h
 cstdlib
@@ -35,12 +35,6 @@ iomanip
 -
 cmath
 -
-
-../parsers/PPMWriter.h
-iostream
--
-math/geometry.h
-../parsers/math/geometry.h
 
 ../parsers/rapidjson/allocators.h
 rapidjson.h
@@ -220,25 +214,11 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Material.cpp
-Material.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Material.h
-materials/BlinnPhong.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/materials/BlinnPhong.h
-iostream
--
-fstream
--
-parsers/PPMWriter.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/parsers/PPMWriter.h
-string
--
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.cpp
+Plane.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Material.h
-math/geometry.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/math/geometry.h
-rapidjson/document.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/rapidjson/document.h
-vector
--
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
+core/Shape.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/Shape.h
 
