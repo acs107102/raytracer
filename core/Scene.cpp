@@ -49,44 +49,46 @@ namespace rt
 	{
 		float t = INFINITY;
 		Vec3f colorOfHit = background;
-
+		
+// std::cout << "shape: " << shapes.size() << std::endl;
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			Hit hit = shapes[i]->intersect(ray);
 			Vec3f intensity(0, 0, 0);
-			Vec3f L_m, N, V, R, H, diffuse;
-			float dist, specular;
+			Vec3f ll, N, V, R, H, diffuse;
+			float distance, specular;
 
 			if (hit.t != 0)
 			{
 				// closer
 				if (hit.t < t)
 				{
+				//std::cout << "t: " << t << std::endl;
+				//std::cout << "hit.t: " << hit.t << std:: endl;
 					colorOfHit = shapes[i]->getAmbient();
 					// printf("color %f %f %f \n",colorOfHit[0],colorOfHit[1],colorOfHit[2]);
-					
+					Vec3f L = lightSources[0]->getPosition();
 					N = hit.normal.normalize(); // n_hat
 					V = (ray->origin - (hit.point)).normalize();	// v_hat
 
-					for (int m = 0; m < lightSources.size(); m++)
-					{
+					//for (int m = 0; m < lightSources.size(); m++)
+					//{
 					//std::cout << "m: " << m << std::endl;
-						L_m = (lightSources[m]->getPosition() - (hit.point)).normalize(); // l_hat
-						H = (L_m + V).normalize();	// h_hat
-						dist = (lightSources[m]->getPosition() - (hit.point)).length();
+						ll = (L - (hit.point)).normalize(); // l_hat
+						H = (ll + V).normalize();	// h_hat
+						distance = (L - (hit.point)).length();
 
-						diffuse = (std::max(0.f, (N.dotProduct(L_m)))) * (lightSources[m]->getColor());
+						diffuse = (std::max(0.f, (N.dotProduct(ll)))) * (lightSources[0]->getColor());
 						specular = std::max(0.f, N.dotProduct(H));
 
-						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[m]->getIntensity(), dist);
-					}
+						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[0]->getIntensity(), distance);
+					//}
 					
 					
 
 					if (ray->raytype == PRIMARY)
 					{
-						// CHECK FOR REFLECTIONS
-						//  IF MATERIAL IS REFLECTIVE
+						// reflect
 						float materialReflectness = shapes[i]->getReflect();
 						if (materialReflectness > 0)
 						{
@@ -105,36 +107,7 @@ namespace rt
 						}
 					}
 				t = hit.t;
-/*
-					// CHECK FOR OBSTRUCTIONS
-					Ray* rayLight = new Ray();
-				rayLight->raytype = SHADOW;
-				Vec3f noise = (1e-4 * hit.normal.normalize());
-				rayLight->origin = hit.point + noise;
-				rayLight->direction = (lightSources[0]->getPosition() - rayLight->origin).normalize();
-				Vec3f shadowColor = rayCasting(rayLight);
 
-				colorOfHit = (intensity * shadowColor);//colorOfHit + colorOfHit*(intensity.normalize());
-					/*
-					Ray *rayLight = new Ray();
-					int lightPositionSampleCount = 100;
-					float shadowStrength = 0;
-					Vec3f noise = (1e-3 * hit.normal.normalize());
-					rayLight->origin = hit.point + noise;
-
-					for (int n = 0; n < lightPositionSampleCount; n++)
-					{
-						//std::cout << "count: " << n << std::endl;;
-						Vec3f lightPosSample = lightSources[0]->getPosition();
-						rayLight->direction = (lightPosSample - hit.point).normalize();
-						float lightDistance = (lightPosSample - hit.point).length();
-						if (getClosestIntersectionT(rayLight) >= lightDistance)
-						{
-							shadowStrength++;
-						}
-					}
-					shadowStrength = shadowStrength / lightPositionSampleCount;
-					colorOfHit = (intensity * shadowStrength);*/
 				colorOfHit = intensity;
 				}
 				

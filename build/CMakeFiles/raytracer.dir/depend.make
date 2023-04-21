@@ -220,6 +220,7 @@ CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/reader.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../parsers/rapidjson/stream.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/Plane.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/Sphere.h
+CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/TriMesh.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../shapes/Triangle.h
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../core/Shape.cpp
 CMakeFiles/raytracer.dir/core/Shape.cpp.o: ../core/Shape.h
@@ -437,6 +438,7 @@ CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../parsers/rapidjson/msinttypes/s
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../parsers/rapidjson/rapidjson.h
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../parsers/rapidjson/reader.h
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../parsers/rapidjson/stream.h
+CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../shapes/Triangle.h
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../shapes/TriMesh.cpp
 CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o: ../shapes/TriMesh.h
 

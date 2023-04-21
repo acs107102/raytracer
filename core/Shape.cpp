@@ -6,6 +6,7 @@
 #include "shapes/Sphere.h"
 #include "shapes/Plane.h"
 #include "shapes/Triangle.h"
+#include "shapes/TriMesh.h"
 
 namespace rt
 {
@@ -58,6 +59,21 @@ namespace rt
 
             triangle->material = Material::createMaterial(shapeSpecs["material"]);
             return triangle;
+        }
+         else if (shapeType.compare("trimesh") == 0){
+            std::printf("Creating trimesh...\n");
+            Vec3f center = Vec3f(shapeSpecs["pos"][0].GetFloat(), shapeSpecs["pos"][1].GetFloat(), shapeSpecs["pos"][2].GetFloat());
+            printf("pos done \n");
+            std::string path = shapeSpecs["model"].GetString();
+            printf("ply path done \n");
+            float sizeScale = shapeSpecs["size"].GetFloat();
+            printf("scale done \n");
+            TriMesh* mesh = new TriMesh(center, path, sizeScale);
+            printf("good \n");
+            
+            mesh->material = Material::createMaterial(shapeSpecs["material"]);
+            return mesh;
+
         }
     }
 

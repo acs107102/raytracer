@@ -221,6 +221,7 @@ CMakeFiles/raytracer.dir/core/Shape.cpp.o
  ../parsers/rapidjson/stream.h
  ../shapes/Plane.h
  ../shapes/Sphere.h
+ ../shapes/TriMesh.h
  ../shapes/Triangle.h
  /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Shape.cpp
  /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Shape.h
@@ -438,6 +439,7 @@ CMakeFiles/raytracer.dir/shapes/TriMesh.cpp.o
  ../parsers/rapidjson/rapidjson.h
  ../parsers/rapidjson/reader.h
  ../parsers/rapidjson/stream.h
+ ../shapes/Triangle.h
  /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.cpp
  /afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.h
 CMakeFiles/raytracer.dir/shapes/Triangle.cpp.o
