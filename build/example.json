@@ -64,7 +64,10 @@
                         0.4,
                         0.3,
                         0.4
-                    ]
+                    ],
+                    "tPath": "../textures/sky-map.ppm",
+                    "tWidth": 850,
+                    "tHeight": 480
                 }
             },
             {
@@ -94,7 +97,7 @@
                     "ks": 0.6,
                     "kd": 0.7,
                     "kr": 0.3,
-                    "specularexponent": 5,
+                    "specularexponent": 10,
                     "diffusecolor": [
                         1.0,
                         1.0,
