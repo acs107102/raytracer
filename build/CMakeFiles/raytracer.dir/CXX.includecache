@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../core/LightSource.h
+math/geometry.h
+../core/math/geometry.h
+rapidjson/document.h
+../core/rapidjson/document.h
+
 ../core/Material.h
 math/geometry.h
 ../core/math/geometry.h
@@ -214,29 +220,17 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-../shapes/Triangle.h
-math/geometry.h
-../shapes/math/geometry.h
-core/RayHitStructs.h
-../shapes/core/RayHitStructs.h
-core/Shape.h
-../shapes/core/Shape.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.cpp
+Scene.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.cpp
-TriMesh.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.h
-typeinfo
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.h
+vector
 -
-
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/TriMesh.h
-math/geometry.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/math/geometry.h
-core/RayHitStructs.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/RayHitStructs.h
+rapidjson/document.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/rapidjson/document.h
+core/LightSource.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/core/LightSource.h
 core/Shape.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/Shape.h
-shapes/Triangle.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/shapes/Triangle.h
-fstream
--
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/core/Shape.h
 

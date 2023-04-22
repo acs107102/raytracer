@@ -75,8 +75,8 @@ namespace rt
     
     Vec3f TriMesh::getRayColor(Vec3f hit, Vec3f color, float exponent, Vec3f direction, float distance)
     {
-        Vec2f texture = getTextureCoordinates(hit);
-        return material->getColour(color, exponent, direction, distance, texture);
+        //Vec2f texture = getTextureCoordinates(hit);
+        return material->getColour(color, exponent, direction, distance, Vec2f(-1, -1));
     }
 
     Vec2f TriMesh::getTextureCoordinates(const Vec3f& point)

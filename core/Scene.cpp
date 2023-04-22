@@ -58,7 +58,7 @@ namespace rt
 			Vec3f ll, N, V, R, H, diffuse;
 			float distance, specular;
 
-			if (hit.t != 0)
+			if (hit.t > 0)
 			{
 				// closer
 				if (hit.t < t)
@@ -67,6 +67,7 @@ namespace rt
 				//std::cout << "hit.t: " << hit.t << std:: endl;
 					colorOfHit = shapes[i]->getAmbient();
 					// printf("color %f %f %f \n",colorOfHit[0],colorOfHit[1],colorOfHit[2]);
+					t = hit.t;
 					Vec3f L = lightSources[0]->getPosition();
 					N = hit.normal.normalize(); // n_hat
 					V = (ray->origin - (hit.point)).normalize();	// v_hat
@@ -80,6 +81,7 @@ namespace rt
 
 						diffuse = (std::max(0.f, (N.dotProduct(ll)))) * (lightSources[0]->getColor());
 						specular = std::max(0.f, N.dotProduct(H));
+						// specular = (std::max(0.f, N.dotProduct(H))) * (lightSources[0]->getIntensity());
 
 						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[0]->getIntensity(), distance);
 					//}
@@ -89,8 +91,8 @@ namespace rt
 					if (ray->raytype == PRIMARY)
 					{
 						// reflect
-						float materialReflectness = shapes[i]->getReflect();
-						if (materialReflectness > 0)
+						float kr = shapes[i]->getReflect();
+						if (kr > 0)
 						{
 							//printf("REFLECTNESS %f \n",materialReflectness);
 							R = ray->direction - (2 * ((ray->direction).dotProduct(N)) * N);
@@ -98,17 +100,28 @@ namespace rt
 							Ray *rayMirror = new Ray();
 							rayMirror->raytype = SECONDARY;
 							rayMirror->origin = hit.point + 1e-4 * hit.normal;
-							rayMirror->direction = -R.normalize();
+							rayMirror->direction = R.normalize();
 							// rayMirror->bounces = 0;
-							Vec3f reflectedColor = materialReflectness * rayCasting(rayMirror);
+							Vec3f reflectedColor = rayCasting(rayMirror);
 							// printf("REFLECTwed %f %f %f \n",reflectedColor[0],reflectedColor[1],reflectedColor[2]);
 
-							intensity = intensity + reflectedColor;
+							intensity = intensity + kr * reflectedColor;
 						}
 					}
-				t = hit.t;
+					//t = hit.t;
 
 				colorOfHit = intensity;
+				/*
+				// CHECK FOR OBSTRUCTIONS 
+				Ray* rayLight = new Ray();
+				rayLight->raytype = SHADOW;
+				Vec3f noise = (1e-4 * hit.normal.normalize());
+				rayLight->origin = hit.point + noise;
+				rayLight->direction = (lightSources[0]->getPosition() - rayLight->origin).normalize();
+				Vec3f shadowColor = rayCasting(rayLight);
+
+				colorOfHit = (intensity * shadowColor);//colorOfHit + colorOfHit*(intensity.normalize());
+				*/
 				}
 				
 			}
