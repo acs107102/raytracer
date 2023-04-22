@@ -37,8 +37,8 @@ namespace rt
         // float t = (v3 - (ray->origin)).dotProduct(normal) / distance;
         Vec3f p = ray->origin + distance * (ray->direction);
 
-        Vec3f height = v1 - v0;
-        Vec3f width = v3 - v0;
+        Vec3f width = v1 - v0;
+        Vec3f height = v3 - v0;
 
         Vec3f direction = p - v0;
 

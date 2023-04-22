@@ -72,19 +72,19 @@ namespace rt
 					N = hit.normal.normalize(); // n_hat
 					V = (ray->origin - (hit.point)).normalize();	// v_hat
 
-					//for (int m = 0; m < lightSources.size(); m++)
-					//{
+					for (int m = 0; m < lightSources.size(); m++)
+					{
 					//std::cout << "m: " << m << std::endl;
-						ll = (L - (hit.point)).normalize(); // l_hat
+						ll = (L - hit.point).normalize(); // l_hat
 						H = (ll + V).normalize();	// h_hat
-						distance = (L - (hit.point)).length();
+						distance = (L - hit.point).length();
 
-						diffuse = (std::max(0.f, (N.dotProduct(ll)))) * (lightSources[0]->getColor());
+						diffuse = (std::max(0.f, (N.dotProduct(ll)))) * (lightSources[m]->getColor());
 						specular = std::max(0.f, N.dotProduct(H));
 						// specular = (std::max(0.f, N.dotProduct(H))) * (lightSources[0]->getIntensity());
 
-						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[0]->getIntensity(), distance);
-					//}
+						intensity = intensity + shapes[i]->getRayColor(hit.point, diffuse, specular, lightSources[m]->getIntensity(), distance);
+					}
 					
 					
 

@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../core/LightSource.h
-math/geometry.h
-../core/math/geometry.h
-rapidjson/document.h
-../core/rapidjson/document.h
-
 ../core/Material.h
 math/geometry.h
 ../core/math/geometry.h
@@ -220,17 +214,11 @@ rapidjson.h
 encodings.h
 ../parsers/rapidjson/encodings.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.cpp
-Scene.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.cpp
+Plane.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
 
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/Scene.h
-vector
--
-rapidjson/document.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/rapidjson/document.h
-core/LightSource.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/core/LightSource.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/Plane.h
 core/Shape.h
-/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/core/core/Shape.h
+/afs/inf.ed.ac.uk/user/s23/s2326265/CG/raytracer/shapes/core/Shape.h
 
